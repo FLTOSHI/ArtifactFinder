@@ -18,10 +18,11 @@ public class CharacterEntity {
 
     @Override
     public String toString() {
-        return "Персонаж:" +
-                "Имя / Прозвище: '" + name + '\'' +
-                "Интеллект" + intelligence +
-                "Навык <Аномалии>" + anomalies +
-                "Навык <Артефакты>" + artifacts;
+        return "Персонаж:" + '\n' +
+                "Имя / Прозвище: " + name + '\n' +
+                "Интеллект: " + ' ' + intelligence + '\n' +
+                "Навык «Аномалии»: " + ' ' + anomalies + '\n' +
+                "Навык «Артефакты»" + ' ' + artifacts + '\n' +
+        "-=-=-=-=-=-=-=-";
     }
 }

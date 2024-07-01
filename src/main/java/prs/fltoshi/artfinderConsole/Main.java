@@ -20,6 +20,7 @@ public class Main {
             switch (input) {
                 case 1:
                     art.characterSelect();
+                    art.mainProcess();
                     break;
 
                 case 2:
