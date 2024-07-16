@@ -16,6 +16,10 @@ public class CharacterEntity {
     private Integer anomalies;
     private Integer artifacts;
 
+    private DetectorEntity anomalyDetector = new DetectorEntity();
+
+    private DetectorEntity artifactDetector = new DetectorEntity();
+
     @Override
     public String toString() {
         return "Персонаж:" + '\n' +
@@ -23,6 +27,6 @@ public class CharacterEntity {
                 "Интеллект: " + ' ' + intelligence + '\n' +
                 "Навык «Аномалии»: " + ' ' + anomalies + '\n' +
                 "Навык «Артефакты»" + ' ' + artifacts + '\n' +
-        "-=-=-=-=-=-=-=-";
+                "-=-=-=-=-=-=-=-";
     }
 }
