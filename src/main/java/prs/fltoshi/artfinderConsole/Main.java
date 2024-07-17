@@ -4,7 +4,7 @@ import prs.fltoshi.artfinderConsole.control.CharacterCreate;
 
 public class Main {
     public static void main(String[] args) {
-        CharacterCreate amogus = new CharacterCreate();
-        amogus.characterCreation();
+        CharacterCreate testing = new CharacterCreate();
+        testing.characterCreation();
     }
 }

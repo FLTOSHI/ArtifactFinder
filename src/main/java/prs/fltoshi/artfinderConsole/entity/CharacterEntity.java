@@ -16,9 +16,10 @@ public class CharacterEntity {
     private Integer anomalies;
     private Integer artifacts;
 
-    private DetectorEntity anomalyDetector = new DetectorEntity();
-
-    private DetectorEntity artifactDetector = new DetectorEntity();
+    // Логические переменные, отвечающие за то, может ли персонаж находить артефакты определенного тира.
+    private boolean tierOneAvailable = false;
+    private boolean tierTwoAvailable = false;
+    private boolean tierThreeAvailable = false;
 
     @Override
     public String toString() {
