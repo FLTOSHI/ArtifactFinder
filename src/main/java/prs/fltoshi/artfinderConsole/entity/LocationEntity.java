@@ -15,6 +15,6 @@ public class LocationEntity {
 
     @Override
     public String toString() {
-        return "Локация " + name + tier;
+        return ("Локация " + name  + ", её тир: " + tier);
     }
 }
