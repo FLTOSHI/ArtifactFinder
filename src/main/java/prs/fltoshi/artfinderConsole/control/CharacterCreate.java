@@ -6,10 +6,17 @@ import java.util.Scanner;
 
 public class CharacterCreate {
 
-    DetectorCreate detectorCreation = new DetectorCreate();
-    CharacterEntity character = new CharacterEntity();
+    private final AnomalyDetectorCreate anomalyDetector;
+    private final ArtifactDetectorCreate artifactDetector;
+    private final CharacterEntity character;
 
-    public void characterSelect() {
+    public CharacterCreate(AnomalyDetectorCreate anomalyDetector, ArtifactDetectorCreate artifactDetector, CharacterEntity character) {
+        this.anomalyDetector = anomalyDetector;
+        this.artifactDetector = artifactDetector;
+        this.character = character;
+    }
+
+    public void createCharacter() {
         Scanner characterParametersInput = new Scanner(System.in);
         System.out.print("Введи имя персонажа: ");
         character.setName(characterParametersInput.nextLine());
@@ -19,17 +26,7 @@ public class CharacterCreate {
         character.setAnomalies(characterParametersInput.nextInt());
         System.out.print("Введи его параметр 'Артефакты': ");
         character.setArtifacts(characterParametersInput.nextInt());
-    }
-
-    public void characterCreation() {
-        System.out.print("Приступаем к созданию персонажа." + "\n");
-        characterSelect();
-        detectorCreation.anomalyDetectorSelect();
-        detectorCreation.artifactDetectorSelect();
-
-        System.out.println("Получилась следующая ебака аномалий. Всё нормально? (мне похуй): ");
-        System.out.print(character);
+        anomalyDetector.anythingCreator();
+        artifactDetector.anythingCreator();
     }
 }
-
-// TODO: 20.07.2024 - разобраться, почему не присваиваются параметр "Аномалии"

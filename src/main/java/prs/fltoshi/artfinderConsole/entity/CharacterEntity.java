@@ -11,15 +11,15 @@ import lombok.Setter;
 @AllArgsConstructor
 public class CharacterEntity {
 
-    private String name = "";
-    private Integer intelligence = 0;
-    private Integer anomalies;
-    private Integer artifacts = 0;
+    String name = "";
+    int intelligence = 0;
+    int anomalies = 0;
+    int artifacts = 0;
 
     // Логические переменные, отвечающие за то, может ли персонаж находить артефакты определенного тира.
-    private boolean tierOneAvailable = false;
-    private boolean tierTwoAvailable = false;
-    private boolean tierThreeAvailable = false;
+    boolean tierOneAvailable = false;
+    boolean tierTwoAvailable = false;
+    boolean tierThreeAvailable = false;
 
     @Override
     public String toString() {

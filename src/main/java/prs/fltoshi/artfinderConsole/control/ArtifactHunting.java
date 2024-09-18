@@ -9,12 +9,14 @@ import java.util.Scanner;
 
 public class ArtifactHunting {
 
-    CharacterCreate characterCreate = new CharacterCreate();
-    DetectorCreate detectorCreate = new DetectorCreate();
+    CharacterEntity character = new CharacterEntity();
+    AnomalyDetectorCreate anomalyDetector = new AnomalyDetectorCreate(character);
+    ArtifactDetectorCreate artifactDetector = new ArtifactDetectorCreate(character);
+    CharacterCreate characterCreate = new CharacterCreate(anomalyDetector, artifactDetector, character);
+
     LocationCreate locationCreate = new LocationCreate();
     AnomalyCreate anomalyCreate = new AnomalyCreate();
 
-    CharacterEntity character = new CharacterEntity();
     AnomalyEntity anomaly = new AnomalyEntity();
     LocationEntity location = new LocationEntity();
 
@@ -23,22 +25,15 @@ public class ArtifactHunting {
     private int limit = 0;
     Scanner scanner = new Scanner(System.in);
 
-
     public void mainProcess() {
-        characterCreate.characterCreation();
-        detectorCreate.anomalyDetectorSelect();
-        detectorCreate.artifactDetectorSelect();
+        characterCreate.createCharacter();
         locationCreate.locationSelect();
         anomalyCreate.anomalySelect();
-
-        if(location.getName().equals("Болота") && anomaly.getName().equals("Трамплин")) {
-            limit = 12;
-        }
 
         // первый этап.
         if (character.getIntelligence() + character.getAnomalies() + dice.nextInt(10) > limit) {
             System.out.println("Персонаж успешно вошёл в аномальное поле.");
-        } else System.out.println("Персонаж успешно вляпался в аномалию!");
+        } else System.out.println("Персонаж успешно вляпался в аномалию " + anomaly.getName() + "!");
 
         // второй этап.
         if (dice.nextInt(2) != 1) {
@@ -48,6 +43,6 @@ public class ArtifactHunting {
         // третий этап
         if (character.getIntelligence() + character.getAnomalies() + dice.nextInt(10) > limit - 3) {
             System.out.println("Персонаж успешно вышел из аномального поля!");
-        } else System.out.println("Персонаж успешно вляпался в аномалию!");
+        } else System.out.println("Персонаж успешно вляпался в аномалию " + anomaly.getName() + "!");
     }
 }
