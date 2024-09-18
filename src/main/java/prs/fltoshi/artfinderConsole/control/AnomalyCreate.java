@@ -2,18 +2,21 @@ package prs.fltoshi.artfinderConsole.control;
 
 import prs.fltoshi.artfinderConsole.entity.AnomalyEntity;
 import prs.fltoshi.artfinderConsole.entity.CharacterEntity;
+import prs.fltoshi.artfinderConsole.interfaces.Creator;
 
 import java.util.Scanner;
 
-public class AnomalyCreate {
-    AnomalyEntity anomaly = new AnomalyEntity();
+public class AnomalyCreate implements Creator {
     CharacterEntity character = new CharacterEntity();
+    AnomalyEntity anomaly = new AnomalyEntity();
 
-    private boolean anomalyValidInput = false;
+    @Override
+    public void anythingCreator() {
+        printMenu();
+        chooseOption();
+    }
 
-    public void anomalySelect() {
-        Scanner anomalyInputChecker = new Scanner(System.in);
-
+    public void printMenu() {
         System.out.println("Выбери аномалию, в которую лезет " + character.getName() + ": ");
         System.out.print("""
                 из имеющихся:\s
@@ -28,73 +31,70 @@ public class AnomalyCreate {
                 9) Жгучий пух
                 10) Архианомалия
                 """);
+    }
 
-        int anomalyInput = anomalyInputChecker.nextInt();
+    private void chooseOption() {
+        try (var input = new Scanner(System.in)) {
+            var choice = input.nextInt();
+            validateChoice(choice);
+        } catch (Exception e) {
+            System.err.println("Неправильно введено значение.");
+        }
+    }
 
-        while (!anomalyValidInput) {
-            switch (anomalyInput) {
-                case 1 -> {
-                    System.out.println("Выбрано: Трамплин");
-                    anomaly.setName("Трамплин");
-                    anomaly.setType("Гравитационная");
-                    anomalyValidInput = true;
-                }
-                case 2 -> {
-                    System.out.println("Выбрано: Карусель");
-                    anomaly.setName("Карусель");
-                    anomaly.setType("Гравитационная");
-                    anomalyValidInput = true;
-                }
-                case 3 -> {
-                    System.out.println("Выбрано: Воронка");
-                    anomaly.setName("Воронка");
-                    anomaly.setType("Гравитационная");
-                    anomalyValidInput = true;
-                }
-                case 4 -> {
-                    System.out.println("Выбрано: Электра");
-                    anomaly.setName("Электра");
-                    anomaly.setType("Электрическая");
-                    anomalyValidInput = true;
-                }
-                case 5 -> {
-                    System.out.println("Выбрано: Жарка");
-                    anomaly.setName("Жарка");
-                    anomaly.setType("Огненная");
-                    anomalyValidInput = true;
-                }
-                case 6 -> {
-                    System.out.println("Выбрано: Кисель");
-                    anomaly.setName("Кисель");
-                    anomaly.setType("Кислотная");
-                    anomalyValidInput = true;
-                }
-                case 7 -> {
-                    System.out.println("Выбрано: Газировка");
-                    anomaly.setName("Газировка");
-                    anomaly.setType("Кислотная");
-                    anomalyValidInput = true;
-                }
-                case 8 -> {
-                    System.out.println("Выбрано: Кислотный туман");
-                    anomaly.setName("Кислотный туман");
-                    anomaly.setType("Кислотная");
-                    anomalyValidInput = true;
-                }
-                case 9 -> {
-                    System.out.println("Выбрано: Жгучий пух");
-                    anomaly.setName("Жгучий пух");
-                    anomaly.setType("Кислотная");
-                    anomalyValidInput = true;
-                }
-                case 10 -> {
-                    System.out.println("Выбрано: Архианомалия");
-                    anomaly.setName("Архианомалия");
-                    anomaly.setType("-");
-                    anomalyValidInput = true;
-                }
-                default -> System.out.print("Дурак что-ли? Написано же по-русски: выбери из имеющихся.");
+    private void validateChoice(int choice) {
+        switch (choice) {
+            case 1 -> {
+                System.out.println("Выбрано: Трамплин");
+                anomaly.setName("Трамплин");
+                anomaly.setType("Гравитационная");
             }
+            case 2 -> {
+                System.out.println("Выбрано: Карусель");
+                anomaly.setName("Карусель");
+                anomaly.setType("Гравитационная");
+            }
+            case 3 -> {
+                System.out.println("Выбрано: Воронка");
+                anomaly.setName("Воронка");
+                anomaly.setType("Гравитационная");
+            }
+            case 4 -> {
+                System.out.println("Выбрано: Электра");
+                anomaly.setName("Электра");
+                anomaly.setType("Электрическая");
+            }
+            case 5 -> {
+                System.out.println("Выбрано: Жарка");
+                anomaly.setName("Жарка");
+                anomaly.setType("Огненная");
+            }
+            case 6 -> {
+                System.out.println("Выбрано: Кисель");
+                anomaly.setName("Кисель");
+                anomaly.setType("Кислотная");
+            }
+            case 7 -> {
+                System.out.println("Выбрано: Газировка");
+                anomaly.setName("Газировка");
+                anomaly.setType("Кислотная");
+            }
+            case 8 -> {
+                System.out.println("Выбрано: Кислотный туман");
+                anomaly.setName("Кислотный туман");
+                anomaly.setType("Кислотная");
+            }
+            case 9 -> {
+                System.out.println("Выбрано: Жгучий пух");
+                anomaly.setName("Жгучий пух");
+                anomaly.setType("Кислотная");
+            }
+            case 10 -> {
+                System.out.println("Выбрано: Архианомалия");
+                anomaly.setName("Архианомалия");
+                anomaly.setType("-");
+            }
+            default -> System.out.print("Дурак что-ли? Написано же по-русски: выбери из имеющихся.");
         }
     }
 }

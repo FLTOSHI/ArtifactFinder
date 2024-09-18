@@ -93,6 +93,5 @@ public class ArtifactDetectorCreate implements Creator {
             character.setAnomalies(currentAnomalies + 5);
             System.out.println("Увеличиваю параметр 'Аномалии' на 5 очков.");
         }
-        System.out.println(character.getAnomalies());
     }
 }
